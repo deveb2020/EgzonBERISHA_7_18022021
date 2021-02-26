@@ -1,0 +1,315 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+header {
+    width: 100%;
+    text-align: center;
+}
+#Searchbox-form {
+    width: 95%;
+    margin: 0 auto;
+    position: relative;
+}
+#Searchbox-form>input {
+    width: 100%;
+    margin-bottom: 1rem;
+    padding: 1.4rem 0rem;
+    background-color: #E7E7E7;
+    border: white solid 1px;
+    border-radius: 7px;
+    font-size: 1rem;
+}
+#Searchbox-form>input::placeholder {
+    padding-left: 1rem;
+}
+#submit-btn {
+    position: absolute;
+    right: 0.3rem;
+    top: 1.1rem;
+    background-color: #E7E7E7;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+}
+#submit-btn>.fa-search{
+    font-size: 1.8rem;
+}
+#filter-buttons {
+    list-style-type: none;
+    display: flex; 
+    margin: 1rem auto;
+    width: 95%;   
+    justify-content: flex-start;
+    padding: 0;
+}
+#filter-buttons>li {
+    background-color: rgba(216, 191, 216, 0);
+    height: 3rem;
+    margin-right: 1rem;
+    border-radius: 6px;
+    color: white;
+    font-size: 1rem;
+    position: relative;
+}
+#filter-buttons>li>.fa-chevron-down {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    color: white;
+    cursor: pointer ;
+}
+#chevron-up-Ingrediants {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    color: white;
+    display: none;
+    cursor: pointer ;
+}
+#chevron-up-Appareil {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    color: white;
+    display: none;
+    cursor: pointer ;
+}
+#chevron-up-Ustensiles {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    color: white;
+    display: none;
+    cursor: pointer ;
+}
+#recettes-container {
+    width: 95%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 0 auto;
+}
+.recette-box {
+    width: 26rem;
+    height: 23rem;
+    background-color: #C7BEBE;
+    margin-bottom: 2.5rem;
+    border-radius: 5px;
+    position: relative;
+}
+.recette-informations {
+    background-color: #E7E7E7;
+    position: absolute;
+    top: 40%;
+    height: 60%;
+    width: 100%;
+    border-radius: 0 0 5px 5px;
+}
+.tittle-and-time {
+    padding: 1rem;
+}
+.tittle-and-time>h1 {
+    margin: 0;
+    float: left;
+    font-size: 1rem;
+    font-weight: bold;
+    width: 280px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.tittle-and-time>span {
+    margin: 0;
+    float: right;
+    font-weight: 500;
+    font-weight: bold;
+}
+.fa-clock{
+    font-weight: 500;
+}
+.ingrediants-and-instructions {
+    width: 100%;
+    margin-top: 1rem;
+    display: flex;
+    overflow: hidden;
+}
+.ingrediants {
+    width: 50%;
+    padding-left: 1rem;
+    padding-right: 0.5rem;
+    padding: 1rem;
+    padding-bottom: 1rem;
+    font-size: 0.9rem;
+}
+.instructions {
+    width:50%;
+    padding-left: 0.5rem;
+    padding-right: 1rem;
+    padding: 1rem;
+    padding-bottom: 1rem;
+}
+.instructions> span {
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+/* when button is clicked open this one*/
+.expand-the-btn{
+    width: 50%;
+}
+.expanded-button{
+    width: 100%;
+    max-height: 25.7rem;
+    background-color: #3282F7 !important;
+    position: absolute;
+    top: 3rem ;
+    left: 0;
+    z-index: 5;
+    border-radius: 0 0 5px 5px;
+    display: flex !important;
+    overflow: hidden !important;
+    flex-direction:row;
+    flex-wrap: wrap;
+    padding-bottom: 1rem;
+}
+.expanded-Appareil {
+    width: 100%;
+    height: 10.4rem;
+    background-color: #68D9A4 !important;
+    position: absolute;
+    top: 3rem ;
+    left: 0;
+    z-index: 5;
+    border-radius: 0 0 5px 5px;
+    display: flex !important;
+    overflow: hidden !important;
+    flex-direction:row;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: left;
+}
+.expanded-Ustensiles{
+    width: 100%;
+    height: 15.7rem;
+    background-color: #ED6454 !important;
+    position: absolute;
+    top: 3rem ;
+    left: 0;
+    z-index: 5;
+    border-radius: 0 0 5px 5px;
+    display: flex !important;
+    overflow: hidden !important;
+    flex-direction:row;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: left;
+}
+.liIngrediants{
+    cursor: pointer;
+    display: block;
+    width: 10rem;
+    padding: 0.3rem 0.5rem;
+}
+.liIngrediants:hover{
+    background-color: #215cb4 ;
+    border-radius: 10px;
+}
+.liAppareil{
+    cursor: pointer;
+    display: block;
+    width: 10rem;
+    padding: 0.3rem 0.5rem;
+}
+.liAppareil:hover{
+    background-color: #40926c ;
+    border-radius: 10px;
+}
+#Ingrediants-placeholder{
+    display: none;
+    justify-content: center;
+    text-align: left;
+}
+.liUstensils{
+    cursor: pointer;
+    display: block;
+    width: 10rem;
+    padding: 0.3rem 0.5rem;
+}
+.liUstensils:hover{
+    background-color: #9c4137  ;
+    border-radius: 10px;
+}
+#input-Ingrediants{
+    width: 99.4%;
+    height: 100%;
+    border-radius: 5px;
+    border-color: white;
+    background-color:#3282F7 ;
+    cursor: pointer ;
+    border: none;
+}
+#input-Appareil{
+    width: 99.4%;
+    height: 100%;
+    border-radius: 5px;
+    border-color: rgba(255, 255, 255, 0);
+    background-color:#68D9A4;
+    cursor: pointer ;
+    border: none;
+}
+#input-Ustensiles {
+    width: 99.4%;
+    height: 100%;
+    border-radius: 5px;
+    border-color: white;
+    background-color:#ED6454;
+    cursor: pointer ;
+    border: none;
+}
+#input-Ingrediants::placeholder, #input-Appareil::placeholder, #input-Ustensiles::placeholder {
+    color: white;
+    padding-left: 1rem;
+}
+#Appareil-placeholder, #Ustensiles-placeholder {
+    display: none;
+}
+#tags-placeholder{
+    width: 95%;
+    background-color: rgba(255, 255, 0, 0);
+    margin: 0 auto;
+    text-align: justify;
+
+}
+.clickedElement {
+    border: none;
+    margin: 0.5rem !important;
+    padding: 0.4rem 0.5rem;
+    border-radius: 7px;
+    background-color: #3282F7;
+    color: white;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media only screen and (max-width: 1424px){
+    #recettes-container {
+        justify-content: space-evenly;
+    }
+    .recette-box {
+        margin: 1rem;
+    }
+}

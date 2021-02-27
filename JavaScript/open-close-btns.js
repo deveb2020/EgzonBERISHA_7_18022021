@@ -3,25 +3,27 @@ import {allRecepiess} from "./recettes-template.js"
 let recettes = recipes;
 
 
-// select the element you whant to click
-const inputIngredient = document.getElementById('input-Ingrediants');
-const inputAppareil = document.getElementById('input-Appareil');
-const inputUstensile = document.getElementById('input-Ustensiles');
-const ingredientsBtn = document.getElementById("Ingrediants");
-const appareilBtn = document.getElementById("Appareil");
-const ustensilesBtn = document.getElementById("Ustensiles");
-const ingrediantsPlaceholder = document.getElementById("Ingrediants-placeholder");
-const appareilsPlaceholder = document.getElementById("Appareil-placeholder");
-const ustensilesPlaceholder = document.getElementById("Ustensiles-placeholder");
-const chevronDownIngrediants = document.getElementById('chevron-down-Ingrediants');
-const chevronUpIngrediants = document.getElementById('chevron-up-Ingrediants');
-const chevronDownAppareil = document.getElementById('chevron-down-Appareil');
-const chevronUpAppareil = document.getElementById('chevron-up-Appareil');
-const chevronDownUstensiles = document.getElementById('chevron-down-Ustensiles');
-const chevronUpUstensiles = document.getElementById('chevron-up-Ustensiles');
+// DOM elements
+const inputIngredient          =   document.getElementById('input-Ingrediants');
+const inputAppareil            =   document.getElementById('input-Appareil');
+const inputUstensile           =   document.getElementById('input-Ustensiles');
+const ingredientsBtn           =   document.getElementById("Ingrediants");
+const appareilBtn              =   document.getElementById("Appareil");
+const ustensilesBtn            =   document.getElementById("Ustensiles");
+const ingrediantsPlaceholder   =   document.getElementById("Ingrediants-placeholder");
+const appareilsPlaceholder     =   document.getElementById("Appareil-placeholder");
+const ustensilesPlaceholder    =   document.getElementById("Ustensiles-placeholder");
+const chevronDownIngrediants   =   document.getElementById('chevron-down-Ingrediants');
+const chevronUpIngrediants     =   document.getElementById('chevron-up-Ingrediants');
+const chevronDownAppareil      =   document.getElementById('chevron-down-Appareil');
+const chevronUpAppareil        =   document.getElementById('chevron-up-Appareil');
+const chevronDownUstensiles    =   document.getElementById('chevron-down-Ustensiles');
+const chevronUpUstensiles      =   document.getElementById('chevron-up-Ustensiles');
 
 
-//////////////////////////////////////////////  OPEN BUTTON   //////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////  OPEN BUTTON   ///////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // ingrediants 
 ingredientsBtn.addEventListener('click', () => {
@@ -72,8 +74,13 @@ ustensilesBtn.addEventListener('click', () => {
     inputUstensile.placeholder = "Recherche un ustensile";
 });
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////  CLOSE BUTTON OUTSIDE   //////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 document.addEventListener("click", (event) => {
+
+    // Ingrediants
     if(event.target.closest('#Ingrediants')) return
     ingredientsBtn.classList.remove('expand-the-btn');
     ingrediantsPlaceholder.classList.remove('expanded-button');
@@ -81,6 +88,7 @@ document.addEventListener("click", (event) => {
     chevronDownIngrediants.style.display = "block";
     inputIngredient.placeholder = " Ingrédients";
 
+    // appareils
     if(event.target.closest('#Appareil')) return
     appareilBtn.classList.remove('expand-the-btn');
     appareilsPlaceholder.classList.remove('expanded-Appareil');
@@ -88,6 +96,7 @@ document.addEventListener("click", (event) => {
     chevronUpAppareil.style.display = "none";
     inputAppareil.placeholder = "Appareil";
 
+    // Ustensiles
     if(event.target.closest('#Ustensiles')) return
     ustensilesBtn.classList.remove('expand-the-btn');
     ustensilesPlaceholder.classList.remove('expanded-Ustensiles');
@@ -97,10 +106,13 @@ document.addEventListener("click", (event) => {
 
 });
 
-//////////////////////////////////////////////  CLOSE BUTTON ON CLICK  //////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////  CLOSE BUTTON CLICK  /////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 document.addEventListener('click', (event) => {
 
+    //chevron up Ingrediants
     if (event.target.id == "chevron-up-Ingrediants") {
         ingredientsBtn.classList.remove('expand-the-btn');
         ingrediantsPlaceholder.classList.remove('expanded-button');
@@ -109,6 +121,7 @@ document.addEventListener('click', (event) => {
         inputIngredient.placeholder = " Ingrédients";
     }
 
+    //chevron up Appareil
     if(event.target.id == 'chevron-up-Appareil') {
         appareilBtn.classList.remove('expand-the-btn');
         appareilsPlaceholder.classList.remove('expanded-Appareil');
@@ -117,6 +130,7 @@ document.addEventListener('click', (event) => {
         inputAppareil.placeholder = "Appareil";
     }
 
+    //chevron up Ustensiles
     if(event.target.id == 'chevron-up-Ustensiles') {
         ustensilesBtn.classList.remove('expand-the-btn');
         ustensilesPlaceholder.classList.remove('expanded-Ustensiles');

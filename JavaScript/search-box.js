@@ -11,6 +11,7 @@ const recetteContainerDOM = document.getElementById('recettes-container');
 
 //filter recipes using search box
 serachInputBox.addEventListener('keyup', (key) => {
+
    const enteredValue = key.target.value.toLowerCase();
    
    if (enteredValue.length >= 3) {

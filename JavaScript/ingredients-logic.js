@@ -7,6 +7,8 @@ let recettes = recipes;
 const tagsPlaceholder = document.getElementById('tags-placeholder');
 const ingrediantsPlaceholder = document.getElementById("Ingrediants-placeholder");
 const recetteContainerDOM = document.getElementById('recettes-container');
+const inputIngredient = document.getElementById('input-Ingrediants');
+
 let ingrediantsArray = [];
 let clickedTags = [];
 let filteredRecettesClick = [];
@@ -23,7 +25,12 @@ recettes.forEach(recette => {
 let ingrediantsArrayNoDuplics = [...new Set(ingrediantsArray)];
 
 
-// create a function to display all the ingredients by default
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////  DISPLAY INGREDIENTS BY DEFAULT //////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//Display all the ingredients by default
 function showIngredients(ingredients) {
 
     ingredients.forEach((ingredient, index) => {
@@ -38,7 +45,10 @@ function showIngredients(ingredients) {
 showIngredients(ingrediantsArrayNoDuplics);
 
 
-//////////////////////////////////// ADD the ingrediant in the tags bar //////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////// ADD INGREDIENT IN TAGS BAR //////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
 //add a event listener to each element of the array
 document.addEventListener('click', (event) => {
@@ -50,12 +60,18 @@ document.addEventListener('click', (event) => {
         else {
             //create an element span each time
             const newElement = document.createElement('span');
-            newElement.innerHTML = `${event.target.innerHTML}  <i class="fas fa-times-circle"></i>`
+            newElement.innerHTML = `${event.target.innerHTML}  <i class="fas fa-times-circle fa-times-circle-ingredients"></i>`
             newElement.classList.add('clickedElement');
 
             //apprend the span element to the dom element
             tagsPlaceholder.appendChild(newElement)
             
+            //remove the search value from the search box
+            inputIngredient.value = "";
+
+            // call the function to display every ingredient by default
+            showIngredients(ingrediantsArrayNoDuplics);
+
             //fill the Array each time we click an element
             clickedTags.push(event.target.innerHTML);
             filterRecettesEnClick() 
@@ -65,15 +81,21 @@ document.addEventListener('click', (event) => {
 
 });
 
+
+
 // filter RECETTES ARRAY using tags 
 function filterRecettesEnClick() {
 
+    //emty the array 
+    filteredRecettesClick = [];
+    
     //loop throught each tag and execute this code
     clickedTags.forEach(tag => {
 
         filteredRecettesClick.push(...recettes.filter(recette => {
 
             return recette.ingredients.some(i => i.ingredient.includes(tag)); 
+
         }))
 
     })
@@ -84,11 +106,12 @@ function filterRecettesEnClick() {
 
 
 
-
-//////////////////////////////////// REMOVE the ingrediant from the tags bar //////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////  REMOVE INGREDIENT FROM TAGS BAR /////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 document.addEventListener('click', (event) => {
-    if (event.target.classList.contains('fa-times-circle')) {
+    if (event.target.classList.contains('fa-times-circle-ingredients')) {
 
         //the NAME of the clicked element
         let currentTagName = event.path[1].innerText.trim();
@@ -100,9 +123,19 @@ document.addEventListener('click', (event) => {
         clickedTags.splice(positionIndex, 1)
 
         //remove the tag from the tags BAR
-        event.path[1].outerHTML = " ";
+        event.path[1].outerHTML = "";
 
+        let removeRecetteFromArray =  filteredRecettesClick.filter(recettes => {
+            
+            return recettes.ingredients.every(i => i.ingredient !== currentTagName )
+        })
 
+        //remove the old recettes
+        recetteContainerDOM.innerHTML = " ";
+        // add the new filtered liste
+        allRecepiess(removeRecetteFromArray);
+
+        //if clickedTags.length is less than 0
         if ( clickedTags.length <= 0) {
 
             allRecepiess(recettes);
@@ -112,8 +145,9 @@ document.addEventListener('click', (event) => {
 })
 
 
-
-///////////////////////////////////////// Filter ingredients in KEYUP ///////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////// Filter ingredients on KEYUP ////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // grab the input element from the DOM
 const inputIngrediants = document.getElementById('input-Ingrediants');
@@ -142,4 +176,3 @@ inputIngrediants.addEventListener('keyup', (key) => {
 
 
 
- 

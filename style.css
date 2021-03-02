@@ -307,8 +307,15 @@ header {
     background-color: #ED6454;
     color: white;
 }
-
-
+#suggest-message {
+    font-size: 1rem;
+    color: rgb(134, 141, 148);
+}
+#suggest-message>p {
+    margin-top: 5rem;
+    text-align: center;
+    color: rgba(233, 51, 51, 0.746);
+}
 
 
 

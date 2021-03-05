@@ -15,6 +15,7 @@ let clickedTags = [];
 let filteredRecettesClick = [];
 
 
+
 //create an loop in recettes to grab all the wanted elements and push them to the empty array
 recettes.forEach(recette => {
     recette.ustensils.forEach(u => {

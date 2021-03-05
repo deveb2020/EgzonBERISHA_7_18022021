@@ -89,7 +89,7 @@ header {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    margin: 0 auto;
+    margin: 2rem auto;
 }
 .recette-box {
     width: 26rem;
@@ -307,7 +307,12 @@ header {
     background-color: #ED6454;
     color: white;
 }
-
+#suggest-message {
+    text-align: center;
+    margin-top: 2rem;
+    color: red;
+    display: none;
+}
 
 
 

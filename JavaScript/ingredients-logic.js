@@ -1,6 +1,7 @@
 import {recipes} from "./Recipes.js";
-import {allRecepiess} from "./recettes-template.js"
+import {allRecepiess} from "./recettes-template.js";
 let recettes = recipes;
+
 
 
 // Global Variables 
@@ -8,6 +9,8 @@ const tagsPlaceholder = document.getElementById('tags-placeholder');
 const ingrediantsPlaceholder = document.getElementById("Ingrediants-placeholder");
 const recetteContainerDOM = document.getElementById('recettes-container');
 const inputIngredient = document.getElementById('input-Ingrediants');
+const serachInputBox = document.getElementById('search-box');
+
 
 let ingrediantsArray = [];
 let clickedTags = [];
@@ -33,6 +36,8 @@ let ingrediantsArrayNoDuplics = [...new Set(ingrediantsArray)];
 //Display all the ingredients by default
 function showIngredients(ingredients) {
 
+    ingrediantsPlaceholder.innerHTML = "";
+
     ingredients.forEach((ingredient, index) => {
         const listItem =  document.createElement('li');
         listItem.innerHTML = `${ingredient}`
@@ -42,6 +47,7 @@ function showIngredients(ingredients) {
     })
     
 }
+
 showIngredients(ingrediantsArrayNoDuplics);
 
 
@@ -58,6 +64,7 @@ document.addEventListener('click', (event) => {
         // verify if the ingrediant is in the array RETURN if not continue execution
         if (clickedTags.includes(event.target.innerHTML)) return
         else {
+
             //create an element span each time
             const newElement = document.createElement('span');
             newElement.innerHTML = `${event.target.innerHTML}  <i class="fas fa-times-circle fa-times-circle-ingredients"></i>`
@@ -74,7 +81,8 @@ document.addEventListener('click', (event) => {
 
             //fill the Array each time we click an element
             clickedTags.push(event.target.innerHTML);
-            filterRecettesEnClick() 
+
+            filterRecettesEnClick(recettes); // <------ here i should pass the list of recettes 
         };
 
     };
@@ -83,8 +91,8 @@ document.addEventListener('click', (event) => {
 
 
 
-// filter RECETTES ARRAY using tags 
-function filterRecettesEnClick() {
+// filter RECETTES  using tags 
+function filterRecettesEnClick(allTheRecettes) {
 
     //emty the array 
     filteredRecettesClick = [];
@@ -92,18 +100,16 @@ function filterRecettesEnClick() {
     //loop throught each tag and execute this code
     clickedTags.forEach(tag => {
 
-        filteredRecettesClick.push(...recettes.filter(recette => {
+        filteredRecettesClick.push(...allTheRecettes.filter(recette => {
 
             return recette.ingredients.some(i => i.ingredient.includes(tag)); 
 
-        }))
-
-    })
+        }));
+    });
     
     recetteContainerDOM.innerHTML = " ";
     allRecepiess(filteredRecettesClick);
 };
-
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -156,14 +162,12 @@ const inputIngrediants = document.getElementById('input-Ingrediants');
 inputIngrediants.addEventListener('keyup', (key) => {
 
     // store the input data inside a variable
-    const enteredValue = key.target.value.toLowerCase();
+    let enteredValue = key.target.value.toLowerCase();
 
-    // filter ingredients Array and store the result of filtered Array inside of a new variable
-    const filteredIngredients = ingrediantsArrayNoDuplics.filter((ingredients) => {
+    const filteredIngredients = arrayToFilter.filter((ingredients) => {
         return ( ingredients.toLowerCase().includes(enteredValue) )
     });
 
-    // clean the old html
     ingrediantsPlaceholder.innerHTML = " ";
     
     // call the function to populate the the table with wanted ingredients
@@ -176,3 +180,4 @@ inputIngrediants.addEventListener('keyup', (key) => {
 
 
 
+export {showIngredients, filterRecettesEnClick};

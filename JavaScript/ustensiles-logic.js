@@ -34,7 +34,9 @@ let ustensilesArrayUniques = [...new Set(ustensilesArray)];
 
 
 //do a new loop on the filtered array and displat them into the right button 
-function showUstensils(ustensiles) {
+export function showUstensils(ustensiles) {
+
+    ustensilesDomElement.innerHTML = "";
 
     ustensiles.forEach(element => {
         const listItem =  document.createElement('li');

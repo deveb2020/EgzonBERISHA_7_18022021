@@ -1,4 +1,4 @@
-# Les Petits Plats
+# Les Petits Plats - P7
 ## _This is an app for food recepies_
 
 ## Tech
